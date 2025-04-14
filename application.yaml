@@ -5,7 +5,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-org/education-platform.git
+    repoURL: https://github.com/harshavardana-reddy/kubernates_manifests_microservices.git
     targetRevision: HEAD
     path: kubernetes
   destination:
