@@ -25,7 +25,7 @@ spec:
             app: admin-service
       target:
         type: AverageValue
-        averageValue: 200
+        averageValue: "200"
 
 ---
 
@@ -56,7 +56,7 @@ spec:
             app: faculty-service
       target:
         type: AverageValue
-        averageValue: 200
+        averageValue: "200"
 
 ---
 
@@ -87,7 +87,7 @@ spec:
             app: student-service
       target:
         type: AverageValue
-        averageValue: 200
+        averageValue: "200"
 
 ---
 
@@ -118,4 +118,4 @@ spec:
             app: api-gateway
       target:
         type: AverageValue
-        averageValue: 200
+        averageValue: "200"

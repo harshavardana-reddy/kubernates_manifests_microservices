@@ -18,7 +18,7 @@ spec:
       serviceAccountName: autoscaler-service-account
       containers:
       - name: autoscaler
-        image: your-registry/microservice-autoscaler:latest
+        image: harshareddy2024/autoscaler:latest
         env:
         - name: LATENCY_THRESHOLD_MS
           value: "300"
