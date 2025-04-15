@@ -4,6 +4,7 @@ metadata:
   name: faculty-service
   labels:
     app: faculty-service
+    version: v1
 spec:
   replicas: 2
   selector:
