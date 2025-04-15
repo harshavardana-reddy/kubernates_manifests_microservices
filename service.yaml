@@ -8,9 +8,10 @@ spec:
   selector:
     app: admin-service
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 4001
+  - name: http  # Changed to follow Istio convention
+    protocol: TCP
+    port: 80
+    targetPort: 4001
 
 ---
 
@@ -24,9 +25,10 @@ spec:
   selector:
     app: student-service
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 4003
+  - name: http  # Changed to follow Istio convention
+    protocol: TCP
+    port: 80
+    targetPort: 4003
 
 ---
 
@@ -40,6 +42,7 @@ spec:
   selector:
     app: faculty-service
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 4002
+  - name: http  # Changed to follow Istio convention
+    protocol: TCP
+    port: 80
+    targetPort: 4001
