@@ -1,6 +1,54 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
+  name: admin-service
+spec:
+  hosts:
+  - "admin-service"
+  http:
+  - route:
+    - destination:
+        host: admin-service
+        subset: v1
+      weight: 100
+
+---
+
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: faculty-service
+spec:
+  hosts:
+  - "faculty-service"
+  http:
+  - route:
+    - destination:
+        host: faculty-service
+        subset: v1
+      weight: 100
+
+---
+
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: student-service
+spec:
+  hosts:
+  - "student-service"
+  http:
+  - route:
+    - destination:
+        host: student-service
+        subset: v1
+      weight: 100
+
+---
+
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
   name: api-gateway
 spec:
   hosts:
@@ -13,22 +61,22 @@ spec:
         prefix: /admin
     route:
     - destination:
-        host: admin-service.default.svc.cluster.local
+        host: admin-service
         port:
-          number: 80
+          number: 4001
   - match:
     - uri:
         prefix: /faculty
     route:
     - destination:
-        host: faculty-service.default.svc.cluster.local
+        host: faculty-service
         port:
-          number: 80
+          number: 4002
   - match:
     - uri:
         prefix: /student
     route:
     - destination:
-        host: student-service.default.svc.cluster.local
+        host: student-service
         port:
-          number: 80
+          number: 4003

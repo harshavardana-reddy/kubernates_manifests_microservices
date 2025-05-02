@@ -4,11 +4,14 @@ kind: Service
 metadata:
   name: eureka-server
 spec:
+  type: LoadBalancer
   selector:
     app: eureka-server
   ports:
-    - port: 8761
-      targetPort: 8761
+  - name: http-eureka  # Changed to follow Istio convention
+    protocol: TCP
+    port: 8761
+    targetPort: 8761
 
 ---
 apiVersion: v1
@@ -18,12 +21,13 @@ metadata:
   labels:
     app: admin-service
 spec:
+  type: LoadBalancer
   selector:
     app: admin-service
   ports:
-  - name: http  # Changed to follow Istio convention
+  - name: http-admin  # Changed to follow Istio convention
     protocol: TCP
-    port: 80
+    port: 4001
     targetPort: 4001
 
 ---
@@ -35,12 +39,13 @@ metadata:
   labels:
     app: student-service
 spec:
+  type: LoadBalancer
   selector:
     app: student-service
   ports:
-  - name: http  # Changed to follow Istio convention
+  - name: http-student  # Changed to follow Istio convention
     protocol: TCP
-    port: 80
+    port: 4003
     targetPort: 4003
 
 ---
@@ -52,13 +57,14 @@ metadata:
   labels:
     app: faculty-service
 spec:
+  type: LoadBalancer
   selector:
     app: faculty-service
   ports:
-  - name: http  # Changed to follow Istio convention
+  - name: http-faculty  # Changed to follow Istio convention
     protocol: TCP
-    port: 80
-    targetPort: 4001
+    port: 4002
+    targetPort: 4002
 
 ---
 # api-gateway-service.yaml
@@ -67,10 +73,11 @@ kind: Service
 metadata:
   name: api-gateway
 spec:
+  type: LoadBalancer
   selector:
     app: api-gateway  # must match your deployment labels
   ports:
-    - name: http
+    - name: http-apigateway
       protocol: TCP
-      port: 80
+      port: 4000
       targetPort: 4000  # matches your Spring Boot server.port

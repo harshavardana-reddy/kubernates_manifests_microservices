@@ -3,11 +3,14 @@ kind: DestinationRule
 metadata:
   name: admin-service
 spec:
-  host: admin-service.default.svc.cluster.local
+  host: admin-service
   subsets:
   - name: v1
     labels:
       version: v1
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
 
 ---
 
@@ -16,11 +19,14 @@ kind: DestinationRule
 metadata:
   name: faculty-service
 spec:
-  host: faculty-service.default.svc.cluster.local
+  host: faculty-service
   subsets:
   - name: v1
     labels:
       version: v1
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
 
 ---
 
@@ -29,8 +35,11 @@ kind: DestinationRule
 metadata:
   name: student-service
 spec:
-  host: student-service.default.svc.cluster.local
+  host: student-service
   subsets:
   - name: v1
     labels:
       version: v1
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
